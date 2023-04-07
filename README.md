@@ -1,10 +1,16 @@
 # GottaEat-UI
 User interface components for the GottaEat food delivery service application. The project consists of four distinct modules that depend upon on another to function properly. 
 
-##How To Run
+## How To Run
 In order to run the demo you need to execute the following steps:
 
-1. Update the Pulsar OAuth2 credentials file in ***ALL*** of the <code>/src/main/resources/META-INF/application.properties</code> files. Replace the value of the <code>pulsar.oauth2.credentials-url</code> property to point to your local OAuth2 credentials file that you downloaded from the SN Cloud.
+0. Update the Pulsar OAuth2 credentials file in ***ALL*** of the <code>/src/main/resources/META-INF/application.properties</code> files. Replace the value of the <code>pulsar.oauth2.credentials-url</code> property to point to your local OAuth2 credentials file that you downloaded from the SN Cloud.
+
+1. Build the code by running this command:
+
+```
+mvn clean install
+```
 
 2. Start the **driver-location-service** by changing into that module's subdirectory and running the following command: 
 
