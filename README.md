@@ -16,7 +16,7 @@ mvn clean install
 
 	<code>"mvn clean compile quarkus:dev"</code>
    
-	This will start the web service, and you can verify that it is running by visiting [http://localhost:8080/index.html]() 
+	This will start the web service, and you can verify that it is running by visiting http://localhost:8080/index.html
 
 
 3. Next, you should start the **driver-simulator** by changing into that module's subdirectory and running the following command: 
@@ -27,7 +27,7 @@ mvn clean install
 
 
 
-   You can verify that this service is running by refreshing the [http://localhost:8080/index.html]() page to confirm new records are showing up based on the timestamps.
+   You can verify that this service is running by refreshing the http://localhost:8080/index.html page to confirm new records are showing up based on the timestamps.
 
 
 4. You can then start the **driver-tracker-websocket** service that provides real-time updates of the driver position by changing into that module's subdirectory and running the following command: 
@@ -35,9 +35,9 @@ mvn clean install
 	<code>"mvn clean compile quarkus:dev"</code>
 	
 
-   To track an individual driver you can visit [http://localhost:8005/driver-tracker.html]() 
+   To track an individual driver you can visit[http://localhost:8005/driver-tracker.html]
    
-   Or if you want to see all the drivers in a current geographical area, then you can visit [http://localhost:8005/grid-tracker.html]() 
+   Or if you want to see all the drivers in a current geographical area, then you can visit http://localhost:8005/grid-tracker.html
 
 
 5. Finally, you can start the **driver-location-analytics-service** by first changing into that module's subdirectory and running the following command: 
