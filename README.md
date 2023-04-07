@@ -35,7 +35,7 @@ mvn clean install
 	<code>"mvn clean compile quarkus:dev"</code>
 	
 
-   To track an individual driver you can visit[http://localhost:8005/driver-tracker.html]
+   To track an individual driver you can visit http://localhost:8005/driver-tracker.html
    
    Or if you want to see all the drivers in a current geographical area, then you can visit http://localhost:8005/grid-tracker.html
 
