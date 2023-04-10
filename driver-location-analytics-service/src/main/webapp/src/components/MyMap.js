@@ -7,7 +7,7 @@ import "./MyMap.css";
 const MyMap = () => {
     const mapRef = useRef(null);
     const [ mapData, setMapData ] = useState( );
-    const [ mapCenter, setMapCenter ] = useState([41.84069, -88.022035]);
+    const [ mapCenter, setMapCenter ] = useState([48.8782, 2.2820]);
     const [ mapZoom, setMapZoom ] = useState( 12 );
 
     const fetchMapData = async () => {
