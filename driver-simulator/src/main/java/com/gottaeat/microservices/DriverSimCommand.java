@@ -29,14 +29,16 @@ public class DriverSimCommand implements Runnable {
     @Inject
     @ConfigProperty(name = "location.webservice", defaultValue = "http://localhost:8080/location/driver")
     String webServiceEndpoint;
+    @Inject
+    @ConfigProperty(name = "reportInterval.ms", defaultValue = "10000")
+    int reportInterval;
 
     @Override
     public void run() {
         System.out.printf("Starting %s drivers!\n", numberOfDrivers);
         for (int idx = 0; idx < Integer.parseInt(numberOfDrivers); idx++) {
-
             executor.submit(new DriverSimulatorThread(webServiceEndpoint,
-                    10000, idx,
+                    reportInterval, idx,
                     Float.parseFloat(startingLat),
                     Float.parseFloat(startingLon)));
             try {

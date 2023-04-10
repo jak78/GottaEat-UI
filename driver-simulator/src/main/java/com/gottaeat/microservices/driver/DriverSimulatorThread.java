@@ -45,7 +45,8 @@ public class DriverSimulatorThread implements Runnable {
                 DriverPositionSignal update = nextSignal(prev);
                 sendSignal(update);
                 prev = update;
-                Thread.sleep(this.reportInterval + rnd.nextInt(2500));
+                int sleepMs = this.reportInterval + rnd.nextInt(this.reportInterval / 4);
+                Thread.sleep(sleepMs);
             } catch (Exception e) {
                 LOGGER.error("Car crashed!", e);
             }
