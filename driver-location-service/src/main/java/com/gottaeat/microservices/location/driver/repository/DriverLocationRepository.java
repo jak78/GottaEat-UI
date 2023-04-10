@@ -67,9 +67,6 @@ public class DriverLocationRepository {
                     LOGGER.debug("driver location: {}", driverLocation);
                     current.put(driverLocation.driverId, driverLocation);
                 }
-                if(counter % 10 == 0) {
-                    LOGGER.info("read {} messages", counter);
-                }
             }
 
         } catch (PulsarClientException e) {
