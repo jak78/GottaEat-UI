@@ -27,7 +27,7 @@ public class DriverLocationResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public void recordSignal(DriverPositionSignal signal) {
-        LOGGER.info("Received signal: {}", signal);
+        LOGGER.debug("Received signal: {}", signal);
         service.record(signal);
     }
 

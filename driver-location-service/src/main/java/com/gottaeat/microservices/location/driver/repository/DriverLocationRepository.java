@@ -4,10 +4,7 @@ import com.gottaeat.commons.beans.PulsarBean;
 import com.gottaeat.microservices.location.driver.domain.DriverLocation;
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
-import org.apache.pulsar.client.api.MessageId;
-import org.apache.pulsar.client.api.PulsarClientException;
-import org.apache.pulsar.client.api.Reader;
-import org.apache.pulsar.client.api.Schema;
+import org.apache.pulsar.client.api.*;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,10 +12,14 @@ import org.slf4j.LoggerFactory;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 @ApplicationScoped
 public class DriverLocationRepository {
@@ -52,11 +53,23 @@ public class DriverLocationRepository {
     public List<DriverLocation> currentLocations() {
         Map<Long, DriverLocation> current = new HashMap<Long, DriverLocation>();
 
+        long counter = 0;
         try {
             getReader().seek(MessageId.earliest);
+            LOGGER.info("start reading messages");
             while (getReader().hasMessageAvailable()) {
-                DriverLocation msg = reader.readNext().getValue();
-                current.put(msg.driverId, msg);
+                Message<DriverLocation> driverLocationMessage = reader.readNext(1, SECONDS);
+                if (driverLocationMessage == null) {
+                    LOGGER.warn("reader timeout");
+                } else {
+                    counter++;
+                    DriverLocation driverLocation = driverLocationMessage.getValue();
+                    LOGGER.debug("driver location: {}", driverLocation);
+                    current.put(driverLocation.driverId, driverLocation);
+                }
+                if(counter % 10 == 0) {
+                    LOGGER.info("read {} messages", counter);
+                }
             }
 
         } catch (PulsarClientException e) {
@@ -65,6 +78,7 @@ public class DriverLocationRepository {
 
         ArrayList<DriverLocation> list = new ArrayList<DriverLocation>();
         list.addAll(current.values());
+        LOGGER.info("{} messages read from topic", counter);
         return list;
     }
 

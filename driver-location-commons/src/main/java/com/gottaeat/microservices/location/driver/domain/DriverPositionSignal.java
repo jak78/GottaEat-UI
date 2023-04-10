@@ -31,4 +31,15 @@ public class DriverPositionSignal implements Comparable<DriverPositionSignal> {
     public int compareTo(DriverPositionSignal o) {
         return Long.compare(this.timestamp, o.timestamp);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("DriverPositionSignal{");
+        sb.append("latitude=").append(latitude);
+        sb.append(", longitude=").append(longitude);
+        sb.append(", timestamp=").append(timestamp);
+        sb.append(", driverId=").append(driverId);
+        sb.append('}');
+        return sb.toString();
+    }
 }

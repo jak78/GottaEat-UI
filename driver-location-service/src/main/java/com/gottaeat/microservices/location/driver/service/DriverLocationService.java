@@ -40,6 +40,7 @@ public class DriverLocationService {
                     .key(Long.toString(cmd.driverId))
                     .value(enriched)
                     .send();
+            LOGGER.debug("{} sent to Pulsar", enriched);
 
         } catch (final Exception ex) {
             LOGGER.error("Unable to publish to Pulsar", ex);

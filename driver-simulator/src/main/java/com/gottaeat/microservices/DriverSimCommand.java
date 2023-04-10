@@ -18,11 +18,11 @@ public class DriverSimCommand implements Runnable {
             description = "The number of drivers to simulate")
     String numberOfDrivers;
 
-    @Parameters(paramLabel = "<Starting Latitude>", defaultValue = "41.8339042",
+    @Parameters(paramLabel = "<Starting Latitude>", defaultValue = "48.8782",
             description = "The starting latitude for the drivers")
     String startingLat;
 
-    @Parameters(paramLabel = "<Starting Longitude>", defaultValue = "-88.0121704",
+    @Parameters(paramLabel = "<Starting Longitude>", defaultValue = "2.2820",
             description = "The starting longitude for the drivers")
     String startingLon;
 
