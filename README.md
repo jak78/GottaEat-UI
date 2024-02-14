@@ -1,16 +1,22 @@
 # GottaEat-UI
 User interface components for the GottaEat food delivery service application. The project consists of four distinct modules that depend upon on another to function properly. 
 
-##How To Run
+## How To Run
 In order to run the demo you need to execute the following steps:
 
-1. Update the Pulsar OAuth2 credentials file in ***ALL*** of the <code>/src/main/resources/META-INF/application.properties</code> files. Replace the value of the <code>pulsar.oauth2.credentials-url</code> property to point to your local OAuth2 credentials file that you downloaded from the SN Cloud.
+0. Update the Pulsar OAuth2 credentials file in ***ALL*** of the <code>/src/main/resources/META-INF/application.properties</code> files. Replace the value of the <code>pulsar.oauth2.credentials-url</code> property to point to your local OAuth2 credentials file that you downloaded from the SN Cloud.
+
+1. Build the code by running this command:
+
+```
+mvn clean install
+```
 
 2. Start the **driver-location-service** by changing into that module's subdirectory and running the following command: 
 
 	<code>"mvn clean compile quarkus:dev"</code>
    
-	This will start the web service, and you can verify that it is running by visiting [http://localhost:8080/index.html]() 
+	This will start the web service, and you can verify that it is running by visiting http://localhost:8080/index.html
 
 
 3. Next, you should start the **driver-simulator** by changing into that module's subdirectory and running the following command: 
@@ -21,7 +27,7 @@ In order to run the demo you need to execute the following steps:
 
 
 
-   You can verify that this service is running by refreshing the [http://localhost:8080/index.html]() page to confirm new records are showing up based on the timestamps.
+   You can verify that this service is running by refreshing the http://localhost:8080/index.html page to confirm new records are showing up based on the timestamps.
 
 
 4. You can then start the **driver-tracker-websocket** service that provides real-time updates of the driver position by changing into that module's subdirectory and running the following command: 
@@ -29,9 +35,9 @@ In order to run the demo you need to execute the following steps:
 	<code>"mvn clean compile quarkus:dev"</code>
 	
 
-   To track an individual driver you can visit [http://localhost:8005/driver-tracker.html]() 
+   To track an individual driver you can visit http://localhost:8005/driver-tracker.html
    
-   Or if you want to see all the drivers in a current geographical area, then you can visit [http://localhost:8005/grid-tracker.html]() 
+   Or if you want to see all the drivers in a current geographical area, then you can visit http://localhost:8005/grid-tracker.html
 
 
 5. Finally, you can start the **driver-location-analytics-service** by first changing into that module's subdirectory and running the following command: 
